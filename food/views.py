@@ -31,7 +31,7 @@ def details(request, item_id):
 
 def createItem(request):
     if request.method == 'POST':
-        form = addItemForm(request.POST)
+        form = addItemForm(request.POST or None)
         if form.is_valid():
             form.save()
             return redirect('/')
@@ -40,3 +40,20 @@ def createItem(request):
         'form' : form
     }
     return render(request, 'food/additem.html', dict_form)
+
+def update_item(request,id):
+    item = items.objects.get(id=id)
+    form = addItemForm(request.POST or None, instance=item)
+
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    return render(request, 'food/additem.html', {'form':form, 'item': item})
+
+def delete_item(request,id):
+    item = items.objects.get(id=id)
+
+    if request.method == 'POST':
+        item.delete()
+        return redirect('/')
+    return render(request, 'food/deleteitem.html', {'item': item})
