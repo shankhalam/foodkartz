@@ -1,0 +1,27 @@
+{% extends 'food/base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <h3 class=" text-center m-5">{{item.item_name}}</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{item.item_image}}" width="500px" height="300px">
+                </div>
+                <div class="col-md-6">
+                    <p>Item Code: {{item.id}}</p>
+                    <p>Item Name: {{item.item_name}}</p>
+                    <p>Item Desc: {{item.item_desc}}</p>
+                    <h3>Item price: {{item.item_price}}</h3>
+                    <div class="addcart">
+                        <a href="" class="btn btn-success">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
