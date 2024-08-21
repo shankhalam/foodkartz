@@ -15,12 +15,19 @@
                 <a class="navbar-brand" href="/">FoodKartz</a>
             <div class="navbar">
                 <a href="{% url 'products' %}" class="nav-link m-2">Product</a>
-                <a href="#" class="nav-link m-2">Account</a>
+                <a href="{% url 'register' %}" class="nav-link m-2">Account</a>
                 <a href="#" class="nav-link m-2">Cart</a>
             </div>
             </div>
         </nav>
     </div>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="container alert">
+            {{message}}
+        </div>
+        {% endfor %}
+    {% endif %}
     {% block body%}
 
     {% endblock %}
