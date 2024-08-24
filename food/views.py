@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import items
 from .forms import addItemForm
 from .forms import addItemForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -15,6 +16,7 @@ def index(request):
     }
     return render (request, 'food/index.html', context)
 
+@login_required
 def products(request):
     context = {
         'item_list': item_list

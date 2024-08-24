@@ -19,7 +19,9 @@
                     {% endif %}
                 </div>
                 <div class="navbar">
+                    {% if user.is_authenticated %}
                     <a href="{% url 'products' %}" class="nav-link m-2">Product</a>
+                    {% endif %}
                     <a href="#" class="nav-link m-2">Cart</a>
                     {% if user.is_authenticated %}
                         <a href="{% url 'logout' %}" class="nav-link m-2">Logout</a>
